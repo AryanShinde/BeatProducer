@@ -32,6 +32,9 @@ h1::after{
     bottom:0%;
     right:10%;
 }
+.sequencer{
+    margin-top: 5rem;
+}
 
 .controls {
     display: flex;
@@ -64,7 +67,7 @@ h1::after{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
 }
 
