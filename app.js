@@ -1,0 +1,50 @@
+class Drumkit{
+    constructor()
+    {
+        this.playbtn=document.querySelector(".play");
+        this.pads=document.querySelectorAll(".pad");
+        this.kickAudio=document.querySelector(".kick-sound");
+        this.clapAudio=document.querySelector(".clap-sound");
+        this.hihatAudio=document.querySelector(".hihat-sound");
+        this.index=0;
+        this.bpm=100;
+    }
+    activate()
+    {
+        this.classList.toggle("active");
+    }
+    repeat()
+    {
+        let step=this.index%8;
+        const activebars=document.querySelectorAll(`.b${step}`);
+        activebars.forEach((bar)=>
+        {
+            bar.style.animation="playTrack alternate 0.3s ease-in-out 2 ";
+            bar.addEventListener("animationend",()=>
+            {
+                bar.style.animation="";
+            });
+
+            
+        });
+        console.log(step);
+        this.index+=1;
+    }
+    start()
+    {
+        let interval=(60/this.bpm)*1000;
+        setInterval(()=>
+        {
+            this.repeat();
+        },interval);
+    }
+}
+const drum1=new Drumkit();
+
+drum1.pads.forEach((pad)=>{
+    pad.addEventListener("click",drum1.activate);
+});
+drum1.playbtn.addEventListener("click",function()
+{
+    drum1.start();
+});
