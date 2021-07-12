@@ -60,10 +60,13 @@ class Drumkit {
         switch (soundName) {
             case "kick-select":
                 this.kickAudio.src = soundValue;
+                break;
             case "clap-select":
                 this.clapAudio.src = soundValue;
+                break;
             case "hihat-select":
                 this.hihatAudio.src = soundValue;
+                break;
         }
     }
 }
