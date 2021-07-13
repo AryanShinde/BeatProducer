@@ -109,10 +109,12 @@ class Drumkit {
     updateTempo(e)
     {
         let interval = (60 / this.bpm) * 1000;
+        this.playbtn.innerText = "Play";
         clearInterval(this.isPlaying);
         this.isPlaying=null;
         if(!this.isPlaying)
         {
+            this.playbtn.innerText = "Stop";
             this.isPlaying = setInterval(() => {
                 this.repeat();
             }, interval);
