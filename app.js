@@ -9,6 +9,7 @@ class Drumkit {
         this.bpm = 200;
         this.selects = document.querySelectorAll("select");
         this.isPlaying = null;
+        this.muteBtn = document.querySelectorAll(".mute");
     }
     activate() {
         this.classList.toggle("active");
@@ -37,7 +38,6 @@ class Drumkit {
                 }
             }
         });
-        console.log(step);
         this.index += 1;
     }
     start() {
@@ -69,6 +69,37 @@ class Drumkit {
                 break;
         }
     }
+    mute(e) {
+        const target = e.target.getAttribute("data-track");
+        e.target.classList.toggle("active");
+        if (e.target.classList.contains("active")) {
+            switch (target) {
+                case "0":
+                    this.kickAudio.volume = 0;
+                    break;
+                case "1":
+                    this.clapAudio.volume = 0;
+                    break;
+                case "2":
+                    this.hihatAudio.volume = 0;
+                    break;
+            }
+            
+        }else{
+            switch (target) {
+                case "0":
+                    this.kickAudio.volume = 1;
+                    break;
+                case "1":
+                    this.clapAudio.volume = 1;
+                    break;
+                case "2":
+                    this.hihatAudio.volume = 1;
+                    break;
+            }
+                
+        }
+    }
 }
 const drum1 = new Drumkit();
 
@@ -79,7 +110,12 @@ drum1.playbtn.addEventListener("click", function () {
     drum1.start();
 });
 drum1.selects.forEach((select) => {
-    select.addEventListener("change",(e)=>{
+    select.addEventListener("change", (e) => {
         drum1.changeSound(e);
+    });
+});
+drum1.muteBtn.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+        drum1.mute(e);
     });
 });

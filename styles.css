@@ -103,7 +103,7 @@ select{
 }
 #hihat-select
 {
-    margin-right: 0.8rem;
+    margin-right: 1rem;
 }
 select:hover
 {
@@ -118,10 +118,18 @@ select:hover
     color: white;
     border: none;
     border-radius: 0.5rem;
-
+}
+.mute.active{
+    background-color: rgb(139, 132, 132);
+}
+i{
+    pointer-events:none;
 }
 h2{
     margin-top: 0.8rem;
+}
+.hihat-volume{
+    margin-right: 3rem;
 }
 .play{
     position: absolute;
