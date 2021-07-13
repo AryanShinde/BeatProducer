@@ -10,6 +10,7 @@ class Drumkit {
         this.selects = document.querySelectorAll("select");
         this.isPlaying = null;
         this.muteBtn = document.querySelectorAll(".mute");
+        this.tempo = document.querySelector(".tempo-slider");
     }
     activate() {
         this.classList.toggle("active");
@@ -84,8 +85,8 @@ class Drumkit {
                     this.hihatAudio.volume = 0;
                     break;
             }
-            
-        }else{
+
+        } else {
             switch (target) {
                 case "0":
                     this.kickAudio.volume = 1;
@@ -97,7 +98,24 @@ class Drumkit {
                     this.hihatAudio.volume = 1;
                     break;
             }
-                
+
+        }
+    }
+    changeTempo(e) {
+        this.bpm = e.target.value;
+        const tempoNum = document.querySelector(".no");
+        tempoNum.innerText = e.target.value;
+    }
+    updateTempo(e)
+    {
+        let interval = (60 / this.bpm) * 1000;
+        clearInterval(this.isPlaying);
+        this.isPlaying=null;
+        if(!this.isPlaying)
+        {
+            this.isPlaying = setInterval(() => {
+                this.repeat();
+            }, interval);
         }
     }
 }
@@ -118,4 +136,10 @@ drum1.muteBtn.forEach((btn) => {
     btn.addEventListener("click", function (e) {
         drum1.mute(e);
     });
+});
+drum1.tempo.addEventListener("input", function (e) {
+    drum1.changeTempo(e);
+});
+drum1.tempo.addEventListener("change", function (e) {
+    drum1.updateTempo(e);
 });

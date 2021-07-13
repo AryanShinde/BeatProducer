@@ -145,7 +145,34 @@ h2{
     width: 120px;
     cursor: pointer;
 }
-
+.tempo
+{
+    display: block;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    
+}
+.tempo-slider
+{
+    width: 30%;
+    -webkit-appearance: none;
+    padding: 0.1rem;
+    background-color: rgb(78, 68, 68);
+    color: white;
+    border-radius: 1rem;
+}
+input:focus
+{
+    outline: none !important;
+}
+.tempo-no
+{
+    margin: 1rem;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
 @keyframes playTrack {
     from{
         transform: scale(1);
